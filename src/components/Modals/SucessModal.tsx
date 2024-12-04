@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import SuccessIcon from "../../assets/success.svg";
 import { useProduct } from "../../hooks/useProductContext";
 import { useLayout } from "../../hooks/useLayoutContext";
