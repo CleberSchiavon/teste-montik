@@ -22,7 +22,7 @@ const ProductCard: React.FC<IProductCard> = ({ product }) => {
   const handleBuyProduct = async () => {
     if (selectedVariant && selectedProductData) {
       try {
-        const redirect_url = await buyProduct({
+        const {redirect_url} = await buyProduct({
           variant_id: Number(selectedVariant.id),
           product_id: selectedProductData.id,
           quantity: 1,
