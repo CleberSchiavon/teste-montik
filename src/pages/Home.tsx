@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import Layout from "../components/Layout";
 import ProductCard from "../components/Card";
-import { useProduct } from "../contexts/ProductContext";
 import { getProduct } from "../api/services/ProductService";
 import { Product } from "../types/Product";
 import SuccessModal from "../components/Modals/SucessModal";
+import { useProduct } from "../hooks/useProductContext";
 
 type ProductIDRequest = 1 | 2;
 
