@@ -6,6 +6,7 @@ import { useProduct } from "../contexts/ProductContext";
 import { buyProduct } from "../api/services/ProductService";
 import { useLayout } from "../contexts/LayoutContext";
 import { openSuccessModal } from "../utils/Layout";
+import { toast } from "react-toastify";
 
 interface IProductCard {
   product: Product;
@@ -50,7 +51,22 @@ const ProductCard: React.FC<IProductCard> = ({ product }) => {
       product: product,
       selectedVariant: variant || null,
     });
-    setCanBuy(variant ? variant.inventory_quantity > 0 : false);
+
+    if (variant) {
+      if (variant.inventory_quantity > 0) {
+        setCanBuy(true);
+      } else {
+        setCanBuy(false);
+        toast.error("Produto indisponível. Selecione outra variante.", {
+          autoClose: 1500,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+        });
+      }
+    } else {
+      setCanBuy(false);
+    }
   };
 
   return (
