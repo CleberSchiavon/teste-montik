@@ -9,7 +9,8 @@ export const ErrorHandling = (error: unknown) => {
 export type HttpMethod = Method;
 
 const PRODUCT_API_URL = import.meta.env.VITE_PRODUCT_API_URL;
+const BUY_PRODUCT_API_URL = import.meta.env.VITE_BUY_PRODUCT_API_URL;
 
 export const ProductClient = axios.create({ baseURL: PRODUCT_API_URL });
 
-export const BuyProductClient = axios.create({baseURL: "/buy-api"})
+export const BuyProductClient = axios.create({baseURL: BUY_PRODUCT_API_URL})
