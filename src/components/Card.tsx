@@ -70,15 +70,15 @@ const ProductCard: React.FC<IProductCard> = ({ product }) => {
   };
 
   return (
-    <div className="flex w-3/4 h-[35rem] rounded-xl overflow-hidden shadow-lg bg-white">
+    <div className="flex sm:flex-row flex-col w-3/4 sm:p-0 p-4 h-[35rem] rounded-xl sm:overflow-hidden overflow-auto shadow-lg bg-white">
       <img
-        className="w-1/2 h-full object-cover"
+        className="sm:w-full h-full object-cover"
         src={image_url}
         alt={title}
         loading="lazy"
       />
-      <div className="p-4 w-1/2 flex flex-col justify-between">
-        <div className="flex flex-col gap-2">
+      <div className="p-4 w-full flex flex-col justify-between">
+        <div className="flex flex-col sm:justify-normal justify-center sm:mb-0 mb-4 gap-2">
           <h1 className="text-black font-semibold text-3xl mb-2">{title}</h1>
           {selectedVariant && (
             <p className="text-lg font-bold text-green-500">
