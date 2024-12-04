@@ -1,8 +1,20 @@
 # Teste Montik
 
-## Vite - React - Typescript - Tailwind
+## Como rodar o projeto
 
-# Informações sobre o teste :)
+Utilizei Yarn para o gerenciamento de dependências, porém caso queira, pode utilizar npm
+
+Caso for utilizar yarn, primeiro instale as dependências do projeto utilizando o comando
+`` 
+yarn install 
+`` 
+
+Logo após, só rodar um
+``
+yarn run dev
+``
+
+### Informações sobre o teste :)
 
 O Objetivo deste teste é montar uma página de um produto de um ecommerce
 
@@ -19,11 +31,6 @@ Esse teste possui alguns niveis, você deverá cumprir as seguintes tarefas:
 3.  Quando o cliente escolher uma variante, indicar se o produto tem ou não estoque. (Para mostrar a resposta, fique livre para escolher a forma de exibição, você pode usar um alert(), ou utilizar qualquer forma mais bonita para isso)
 4.  Enviar os dados de compra para o checkout
 
-
-## Requisitos
-Precisamos que tenha algumas coisas para poder rodar:
-- Computador
-- [npm](https://www.npmjs.com/) ou [yarn](https://yarnpkg.com/)
 
 
 ## APIs
