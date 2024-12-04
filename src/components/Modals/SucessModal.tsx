@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
-import { useProduct } from "../../contexts/ProductContext";
-import { useLayout } from "../../contexts/LayoutContext";
 import SuccessIcon from "../../assets/success.svg";
+import { useProduct } from "../../hooks/useProductContext";
+import { useLayout } from "../../hooks/useLayoutContext";
 
 export default function SuccessModal() {
   const { selectedProduct } = useProduct();
@@ -14,7 +14,7 @@ export default function SuccessModal() {
         window.location.href = successModal.redirect_url;
       }, 5000);
     }
-  }, [successModal.open]);
+  }, [successModal.open, successModal.redirect_url]);
   return (
     <dialog id="success_modal" className="modal">
       <div className="modal-box">

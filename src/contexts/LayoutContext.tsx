@@ -1,13 +1,8 @@
-import { createContext, useContext, useState } from "react";
-type SuccessModal = {
-  open: boolean;
-  redirect_url: string;
-};
-interface LayoutContextType {
-  successModal: SuccessModal;
-  setSuccessModal: React.Dispatch<React.SetStateAction<SuccessModal>>;
-}
-const LayoutContext = createContext<LayoutContextType | undefined>(undefined);
+import { createContext, useState } from "react";
+import { LayoutContextType, SuccessModal } from "../types/contexts/LayoutContext";
+
+// eslint-disable-next-line react-refresh/only-export-components
+export const LayoutContext = createContext<LayoutContextType | undefined>(undefined);
 
 export const LayoutProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
@@ -22,14 +17,4 @@ export const LayoutProvider: React.FC<{ children: React.ReactNode }> = ({
       {children}
     </LayoutContext.Provider>
   );
-};
-
-export const useLayout = (): LayoutContextType => {
-  const context = useContext(LayoutContext);
-
-  if (!context) {
-    throw new Error("useLayout precisa ser utilizado com um LayoutProvider");
-  }
-
-  return context;
 };

@@ -1,17 +1,13 @@
-import { createContext, useContext, useState } from "react";
-import { Product, Variant } from "../types/Product";
+import { createContext, useState } from "react";
+import {
+  ProductContextType,
+  SelectedProduct,
+} from "../types/contexts/ProductContext";
 
-interface SelectedProduct {
-  product: Product | null;
-  selectedVariant: Variant | null;
-}
-
-interface ProductContextType {
-  selectedProduct: SelectedProduct;
-  setSelectedProduct: React.Dispatch<React.SetStateAction<SelectedProduct>>;
-}
-
-const ProductContext = createContext<ProductContextType | undefined>(undefined);
+// eslint-disable-next-line react-refresh/only-export-components
+export const ProductContext = createContext<ProductContextType | undefined>(
+  undefined
+);
 
 export const ProductProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
@@ -26,14 +22,4 @@ export const ProductProvider: React.FC<{ children: React.ReactNode }> = ({
       {children}
     </ProductContext.Provider>
   );
-};
-
-export const useProduct = (): ProductContextType => {
-  const context = useContext(ProductContext);
-
-  if (!context) {
-    throw new Error("useProduct precisa ser utilizado com um ProductProvider");
-  }
-
-  return context;
 };

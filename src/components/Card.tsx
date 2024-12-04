@@ -2,11 +2,11 @@ import React, { useState } from "react";
 import VariantSelect from "./VariantSelect";
 import { Product } from "../types/Product";
 import { moneyFormatter } from "../utils/NumberFormatters";
-import { useProduct } from "../contexts/ProductContext";
 import { buyProduct } from "../api/services/ProductService";
-import { useLayout } from "../contexts/LayoutContext";
 import { openSuccessModal } from "../utils/Layout";
 import { toast } from "react-toastify";
+import { useProduct } from "../hooks/useProductContext";
+import { useLayout } from "../hooks/useLayoutContext";
 
 interface IProductCard {
   product: Product;
