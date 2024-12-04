@@ -1,6 +1,6 @@
-const fetch = require('node-fetch');
+import fetch from 'node-fetch';
 
-exports.handler = async (event) => {
+export async function handler(event) {
     const response = await fetch('https://app.landingpage.com.br/api/checkoutloja/LPL2gc/5d87eb644e5631bc6a03f1e43a804e1c' + event.path.replace('/buy-api', ''));
     const data = await response.json();
     return {
@@ -10,4 +10,4 @@ exports.handler = async (event) => {
             'Content-Type': 'application/json',
         },
     };
-};
+}
