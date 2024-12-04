@@ -1,6 +1,5 @@
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
-
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
 
 // https://vite.dev/config/
 export default defineConfig({
@@ -10,8 +9,9 @@ export default defineConfig({
       '/buy-api': {
         target: 'https://app.landingpage.com.br/api/checkoutloja/LPL2gc/5d87eb644e5631bc6a03f1e43a804e1c',
         changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/api/, ''),
+        secure: false,
+        rewrite: (path) => path.replace(/^\/buy-api/, ''), 
       }
     }
   }
-})
+});
