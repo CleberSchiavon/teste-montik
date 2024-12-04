@@ -4,6 +4,7 @@ import ProductCard from "../components/Card";
 import { useProduct } from "../contexts/ProductContext";
 import { getProduct } from "../api/services/ProductService";
 import { Product } from "../types/Product";
+import SuccessModal from "../components/Modals/SucessModal";
 
 type ProductIDRequest = 1 | 2;
 
@@ -55,6 +56,7 @@ const HomeProduct: React.FC = () => {
           </p>
         </div>
       )}
+      <SuccessModal />
     </Layout>
   );
 };

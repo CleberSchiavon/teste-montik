@@ -1,8 +1,11 @@
 import React, { useState } from "react";
+import VariantSelect from "./VariantSelect";
 import { Product } from "../types/Product";
 import { moneyFormatter } from "../utils/NumberFormatters";
 import { useProduct } from "../contexts/ProductContext";
-import VariantSelect from "./VariantSelect";
+import { buyProduct } from "../api/services/ProductService";
+import { useLayout } from "../contexts/LayoutContext";
+import { openSuccessModal } from "../utils/Layout";
 
 interface IProductCard {
   product: Product;
@@ -10,10 +13,34 @@ interface IProductCard {
 
 const ProductCard: React.FC<IProductCard> = ({ product }) => {
   const { selectedProduct, setSelectedProduct } = useProduct();
-  const { selectedVariant } = selectedProduct;
+  const { setSuccessModal } = useLayout();
+  const { selectedVariant, product: selectedProductData } = selectedProduct;
   const { image_url, title, options, values, variants } = product;
   const [canBuy, setCanBuy] = useState<boolean>(false);
 
+  const handleBuyProduct = async () => {
+    if (selectedVariant && selectedProductData) {
+      try {
+        const redirect_url = await buyProduct({
+          variant_id: Number(selectedVariant.id),
+          product_id: selectedProductData.id,
+          quantity: 1,
+          values: selectedVariant.values,
+        });
+        openSuccessModal();
+        setSuccessModal({
+          open: true,
+          redirect_url: redirect_url,
+        });
+      } catch (error) {
+        console.error("Erro ao comprar o produto:", error);
+        setSuccessModal({
+          open: false,
+          redirect_url: "",
+        });
+      }
+    }
+  };
   const handleVariantSelection = (selectedValues: string[]) => {
     const variant = variants.find((v) =>
       v.values.every((value, index) => value === selectedValues[index])
@@ -61,9 +88,9 @@ const ProductCard: React.FC<IProductCard> = ({ product }) => {
             !canBuy ? "opacity-50 cursor-not-allowed" : ""
           }`}
           disabled={!canBuy}
-          onClick={() => {
+          onClick={async () => {
             if (canBuy && selectedVariant) {
-              console.log("Produto Selecionado", {product, selectedVariant}); // TODO(cleberschiavon): adicionar redirect aqui
+              await handleBuyProduct();
             }
           }}
         >

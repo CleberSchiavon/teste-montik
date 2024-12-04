@@ -20,7 +20,7 @@ export const getProduct = async (productRequestID: number) => {
 
 export const buyProduct = async (payload: BuyProductPayload) => {
   try {
-    const response = await BuyProductClient.post("", payload);
+    const response = await BuyProductClient.post("", [payload]);
     return response.data;
   } catch (error) {
     console.error("Error fetching data:", error);
