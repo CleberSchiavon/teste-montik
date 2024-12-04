@@ -1,7 +1,7 @@
 import { createRoot } from "react-dom/client";
 import { BrowserRouter, Route, Routes } from "react-router";
 import HomeProduct from "./pages/Home.tsx";
-import Checkout from "./pages/Checkout.tsx";
+import SucessPage from "./pages/SucessPage.tsx";
 import { ProductProvider } from "./contexts/ProductContext.tsx";
 import "./index.css";
 
@@ -10,7 +10,7 @@ createRoot(document.getElementById("root")!).render(
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<HomeProduct />} />
-        <Route path="/checkout" element={<Checkout />} />
+        <Route path="/success" element={<SucessPage />} />
       </Routes>
     </BrowserRouter>
   </ProductProvider>

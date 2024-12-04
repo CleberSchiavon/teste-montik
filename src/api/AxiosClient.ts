@@ -7,10 +7,6 @@ export const ErrorHandling = (error: unknown) => {
 };
 
 export type HttpMethod = Method;
-export interface ApiResponse<T> {
-  data: T;
-  message: string;
-}
 
 const API_URL = import.meta.env.VITE_API_URL;
 
